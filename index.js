@@ -6,7 +6,13 @@ const port = 3000
 // Mongo DB configuration
 const uri = "mongodb+srv://sydney:sydney123@cluster0.i9jjvi0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+const client = new MongoClient(uri, {
+  serverApi: {
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
+});
 
 async function run() {
   try {
@@ -33,4 +39,6 @@ app.get('/recipe', (req, res) => {
     res.send('this is a recipe');
   })
 
-app.listen();
+  
+
+app.listen(()=>console.log('server running'));
