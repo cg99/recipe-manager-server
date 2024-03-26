@@ -2,7 +2,6 @@ const express = require('express')
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const app = express()
 const port = 3000
-const usePort = false;
 
 // Mongo DB configuration
 const uri = "mongodb+srv://sydney:sydney123@cluster0.i9jjvi0.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -39,6 +38,4 @@ app.get('/recipe', (req, res) => {
     res.send('this is a recipe');
   })
 
-app.listen(usePort ? port : null, () => {
-  console.log(`Example app listening on port ${port}`)
-})
+app.listen();
